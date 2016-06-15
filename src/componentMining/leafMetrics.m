@@ -52,7 +52,7 @@ nLeaves = length(leaves);
 classDist = single(zeros(nClasses, nLeaves));
 
 for l = 1:nLeaves       
-    bins = (1:101)';
+    bins = (1:nClasses)';
     h = histc(leaves(l).trData.classIndex, bins);
     classDist(:, l) = h ./ sum(h);
 end

@@ -6,6 +6,7 @@ vlfeat/*
 done/*
 error.txt
 *mexa64
+*mexmaci64
 fast_sc/*
 GraphSeg/*
 *.sh

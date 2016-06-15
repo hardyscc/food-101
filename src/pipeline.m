@@ -6,12 +6,12 @@ vl_threads(8);
 params = setParams();
 
 %% Segment and encode dataset %%
-if ~exist('data.mat', 'file')
+if ~exist(fullfile(cd,'data.mat'), 'file')
    segmentDataset(params);
 end
 
 %% Grow forest (Section 4.1) %%
-if ~exist('trees.mat', 'file')
+if ~exist(fullfile(cd,'trees.mat'), 'file')
    trees = randomForest(params);
 else
    load('trees.mat');

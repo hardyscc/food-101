@@ -1,12 +1,12 @@
-function params = setParams()
+   function params = setParams()
 
 load('classes.mat', 'classes');
 params = matfile('params.mat', 'Writable', true);
 params.classes = classes;
-params.nTrees = 15;
-params.treeSamples = 200000;
+params.nTrees = 5;
+params.treeSamples = 40000;
 params.nComponents = 20;
-params.nClasses = 101;
+params.nClasses = 21;
 params.gridStep = 4;
 params.pyramidLevels = 3;
 params.datasetPath = 'data/images';
@@ -18,9 +18,8 @@ params = load('params.mat');
 if ~isfield(params, 'featureGmm')
     encParams = calcGlobalParams(params);
     save('params.mat', '-append', '-struct', 'encParams');
+    params = load('params.mat');
 end
-
-save('params.mat', '-struct', 'params');
 
 % Seed generator
 rng('shuffle');

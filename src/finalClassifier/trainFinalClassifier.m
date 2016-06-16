@@ -30,11 +30,11 @@ function encodeImageSet(type, components, params, data)
 if strcmp(type,'train')
 %   fid = fopen('data/meta/train.txt');
   start = 1;
-  nImages = 75750;
+  nImages = 15750;
 elseif strcmp(type,'test');
 %   fid = fopen('data/meta/test.txt');
-  start = 75750+1;
-  nImages = 25250;
+  start = 15750+1;
+  nImages = 5250;
 end
 
 % images = textscan(fid, '%s', 'Delimiter', '\n');
@@ -56,7 +56,7 @@ numCells = sum(4 .^ (0:pyramidLevels-1)); % Num of cells in pyramid grid
 d = nClasses * nComponents * numCells; % Dimensionality of feature vec
 
 load('index.mat');
-load('segments');
+%load('segments');
 
 step = 1;
 X = single(zeros(nImages/step, d));
@@ -65,8 +65,8 @@ s = 1;
 
 for i = start:step:start+nImages-1
     try
-        tic
-        fprintf('%d/%d ', i, nImages);
+        tic  
+        fprintf('%d/%d ', i, start+nImages-1);
         str = num2str(cell2mat(imgSet(i)));
         split = strsplit(str, '/');
         class = num2str(cell2mat(split(1)));
@@ -81,7 +81,9 @@ for i = start:step:start+nImages-1
         iend = find(map(:,1)==index, 1, 'last' );
         F = data.features(istart:iend, :);
         
-        X(s,:) = extractImageFeatureVector(I, segments(index).L, F, params);
+        L = segmentImage(I);
+        
+        X(s,:) = extractImageFeatureVector(I, L, F, params);
         y(s) = uint8(find(strcmp(classes, class)));
         s = s + 1;
         toc

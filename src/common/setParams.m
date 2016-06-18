@@ -1,7 +1,7 @@
 function params = setParams()
 
 if ~exist(fullfile(cd,'classes.mat'), 'file')    
-    fid = fopen('data/meta/classes.txt')
+    fid = fopen('data/meta/classes.txt');
     tmpclasses = textscan(fid, '%s', 'Delimiter', '\n');
     classes = tmpclasses{1};
     fclose(fid);

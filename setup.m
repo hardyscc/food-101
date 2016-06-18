@@ -8,4 +8,4 @@ addpath(fullfile(cd,'lib','matlab-tree'));
 addpath(fullfile(cd,'lib','graphSeg'));
 addpath(fullfile(cd,'lib','liblinear-2.1','matlab'));
 addpath(fullfile(cd,'lib','liblinear-multicore-2.1-2','matlab'));
-run(fullfile(cd,'lib','vlfeat-0.9.20','toolbox','vl_setup'));
+run('/opt/vlfeat/toolbox/vl_setup');

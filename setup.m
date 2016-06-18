@@ -8,13 +8,4 @@ addpath(fullfile(cd,'lib','matlab-tree'));
 addpath(fullfile(cd,'lib','graphSeg'));
 addpath(fullfile(cd,'lib','liblinear-2.1','matlab'));
 addpath(fullfile(cd,'lib','liblinear-multicore-2.1-2','matlab'));
-run('/opt/vlfeat/toolbox/vl_setup');
-
-if ~exist(fullfile(cd,'classes.mat'), 'file')    
-    fid = fopen('data/meta/classes.txt')
-    tmpclasses = textscan(fid, '%s', 'Delimiter', '\n');
-    classes = tmpclasses{1};
-    fclose(fid);
-    save('classes.mat','classes');
-    clear;
-end
+run(fullfile(cd,'lib','vlfeat-0.9.20','toolbox','vl_setup'));

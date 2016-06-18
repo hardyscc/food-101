@@ -1,6 +1,15 @@
-   function params = setParams()
+function params = setParams()
 
-load('classes.mat', 'classes');
+if ~exist(fullfile(cd,'classes.mat'), 'file')    
+    fid = fopen('data/meta/classes.txt')
+    tmpclasses = textscan(fid, '%s', 'Delimiter', '\n');
+    classes = tmpclasses{1};
+    fclose(fid);
+    save('classes.mat','classes');
+else
+    load('classes.mat', 'classes');
+end
+
 params = matfile('params.mat', 'Writable', true);
 params.classes = classes;
 params.nTrees = 5;

@@ -6,6 +6,5 @@ addpath(fullfile(cd,'src','forest'));
 addpath(fullfile(cd,'src','seg-enc'));
 addpath(fullfile(cd,'lib','matlab-tree'));
 addpath(fullfile(cd,'lib','graphSeg'));
-addpath(fullfile(cd,'lib','liblinear-2.1','matlab'));
-addpath(fullfile(cd,'lib','liblinear-multicore-2.1-2','matlab'));
+addpath(fullfile(cd,'lib','liblinear-multicore-2.11-1','matlab'));
 run('/opt/vlfeat/toolbox/vl_setup');

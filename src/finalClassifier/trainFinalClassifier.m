@@ -14,8 +14,8 @@ clear data
 
 load('train.mat');
 fprintf('Loaded training set\n');
-%model = train(double(y), sparse(double(X)), '-s 2 -n 32 -q');
-model = train(double(y), sparse(double(X)), '-s 2 -q');
+model = train(double(y), sparse(double(X)), '-s 2 -n 32 -q');
+%model = train(double(y), sparse(double(X)), '-s 2 -q');
 save('model', 'model');
 
 clear X y

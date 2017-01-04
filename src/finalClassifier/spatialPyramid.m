@@ -10,7 +10,7 @@ function grid = spatialPyramid(levels, image, segments, badSegments)
 %   At level 1, the image is subdivided into four quadrants, yielding four 
 %   feature histograms, and so on.
 
-[width, height, ~] = size(image);
+[height, width, ~] = size(image);
 level = spatialPyramidGrid(width, height, levels);
 totalCells = sum(4.^(0:levels-1));
 grid(totalCells) = struct('spixelsToAverage', []);
@@ -28,7 +28,7 @@ for l = 1:levels
         yv = round(cell.yv);
 
         % Make sure this works
-        temp = unique(segments(min(xv):max(xv), min(yv):max(yv)));   
+        temp = unique(segments(min(yv):max(yv), min(xv):max(xv)));
         ind = zeros(length(temp), 1);
         
         % Ignore very small superpixels
